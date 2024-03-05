@@ -1,0 +1,126 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  extensions = [uuidOssp(map: "uuid-ossp", schema: "public")]
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model entity_contact {
+  Id           String                          @id(map: "PK_5f348b06ec063cd1763a7216731") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  ContactType  entity_contact_contacttype_enum
+  Values       String                          @db.VarChar
+  entityUserId String?                         @db.Uuid
+  entity_user  entity_user?                    @relation(fields: [entityUserId], references: [Id], onDelete: NoAction, onUpdate: NoAction, map: "FK_d13bde87ffcd54702b2c53d63b0")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model entity_role {
+  Id           String                @id(map: "PK_0b0ea2ccc01f5e939e40560de83") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  Role         entity_role_role_enum @default(Read)
+  Values       String                @db.VarChar
+  CreatedDate  DateTime              @default(now()) @db.Timestamp(6)
+  UpdatedDate  DateTime              @default(now()) @db.Timestamp(6)
+  IsActive     Boolean               @default(true)
+  entityUserId String?               @db.Uuid
+  entity_user  entity_user?          @relation(fields: [entityUserId], references: [Id], onDelete: NoAction, onUpdate: NoAction, map: "FK_de0d1aa85f76422f76f5f8bab98")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model entity_user {
+  Id                   String                      @id(map: "PK_f3327832cc778fa8eeb960d2436") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  Email                String                      @db.VarChar
+  PasswordSalt         String                      @db.VarChar
+  PasswordHash         String                      @db.VarChar
+  ProfilePicture       String?                     @db.VarChar
+  PasswordResetToken   String?                     @db.VarChar
+  PasswordResetExpires DateTime?                   @db.Timestamp(6)
+  IsAccountLocked      Boolean                     @default(false)
+  FirstName            String                      @db.VarChar
+  LastName             String                      @db.VarChar
+  EntityType           entity_user_entitytype_enum @default(Customer)
+  IsActive             Boolean                     @default(true)
+  CreatedDate          DateTime                    @default(now()) @db.Timestamp(6)
+  UpdatedDate          DateTime                    @default(now()) @db.Timestamp(6)
+  entity_contact       entity_contact[]
+  entity_role          entity_role[]
+  inventory            inventory[]
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model inventory {
+  Id                String       @id(map: "PK_057fdfcc3d80c960e76a966a817") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  QuantityAvailable Int          @default(0)
+  Price             Float        @default(0)
+  Currency          String       @default("RM") @db.VarChar
+  productId         String?      @db.Uuid
+  entityUserId      String?      @db.Uuid
+  entity_user       entity_user? @relation(fields: [entityUserId], references: [Id], onDelete: NoAction, onUpdate: NoAction, map: "FK_7860db7e4860aa43b21b55755ca")
+  product           product?     @relation(fields: [productId], references: [Id], onDelete: NoAction, onUpdate: NoAction, map: "FK_c8622e1e24c6d054d36e8824490")
+  isDeleted         Boolean      @default(false)
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model product {
+  Id                 String            @id(map: "PK_a22f8718d47066cb0a07aa5db66") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  ProductName        String            @db.VarChar
+  ProductDescription String?           @db.VarChar
+  CreatedDate        DateTime          @default(now()) @db.Timestamp(6)
+  UpdatedDate        DateTime          @default(now()) @db.Timestamp(6)
+  IsActive           Boolean           @default(true)
+  productCategoryId  String?           @db.Uuid
+  inventory          inventory[]
+  product_category   product_category? @relation(fields: [productCategoryId], references: [Id], onDelete: NoAction, onUpdate: NoAction, map: "FK_618194d24a7ea86a165d7ec628e")
+  product_media      product_media[]
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model product_category {
+  Id           String    @id(map: "PK_744674b12781617d3d1e6376fab") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  CategoryName String    @db.VarChar
+  IsActive     Boolean   @default(true)
+  product      product[]
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model product_media {
+  Id           String                          @id(map: "PK_c7d41a3c21de05b9b60f7df7f50") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  Order        Int                             @default(1)
+  Height       Int?
+  Width        Int?
+  MimeType     String?                         @db.VarChar
+  MediaUrl     String                          @db.VarChar
+  ThumbnailUrl String                          @db.VarChar
+  UploadStatus product_media_uploadstatus_enum @default(Uploading)
+  productId    String?                         @db.Uuid
+  product      product?                        @relation(fields: [productId], references: [Id], onDelete: NoAction, onUpdate: NoAction, map: "FK_50e3945c6150d80b69b5f18515a")
+}
+
+enum entity_contact_contacttype_enum {
+  Address @map("1")
+  Email @map("2")
+  Phone @map("3")
+}
+
+enum entity_role_role_enum {
+  Create @map("1")
+  Read @map("2")
+  Update @map("3")
+  Delete @map("4")
+}
+
+enum entity_user_entitytype_enum {
+  Customer @map("1")
+  Supplier @map("2")
+}
+
+enum product_media_uploadstatus_enum {
+  Uploading @map("1")
+  Converting @map("2")
+  Completed @map("3")
+  Failed @map("4")
+}
