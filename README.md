@@ -10,6 +10,16 @@ This repositories serves as the Domain and Migrations packages for this assessme
 
 **This repositories is not a back-end code but rather act as seperate repositories to generate schema in 1 place.**
 
+## Todo
+
+- [/] Contact Endpoint
+- [/] Roles Endpoint
+- [/] User Endpoint
+- [] Product Category Endpoint
+- [] Product Media Endpoint
+- [] Product Endpoint
+- [] Inventory Endpoint
+
 ## Documentation
 
 ### [Demo Link](https://www.figma.com/file/AE6vCE7lwxDaMI32c0nVWk/%5BFarhan%5D-GovTech-Assessment-Brainstorm-Board?type=whiteboard&t=ewtZZiMzR75Sc1k7-1)
