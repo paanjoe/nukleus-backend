@@ -2,6 +2,7 @@ import express from "express";
 import type { Request, Response } from "express";
 import { body, validationResult } from "express-validator";
 import * as EntityContactService from "./entitycontact.service";
+
 export const entitycontactRouter = express.Router();
 
 // Get

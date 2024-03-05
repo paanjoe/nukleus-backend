@@ -1,0 +1,45 @@
+### By UserId
+GET https://nukleus-backend.onrender.com/api/entitycontact?take=10&skip=1&order=values&direction=asc&userid=0207c06d-f4da-4d0a-b237-54c5c45be067 HTTP/1.1
+Content-Type: application/json
+
+{
+  "count": 2,
+  "total": 150,
+  "data": [
+    {
+      "Id": "1e546f9b-37df-4834-a404-1b66d7b3cd0c",
+      "ContactType": "Phone",
+      "Values": "609.291.8366 x622",
+      "entityUserId": "0207c06d-f4da-4d0a-b237-54c5c45be067"
+    },
+    {
+      "Id": "61fbffbb-d596-4d79-84bf-bf594fe5577f",
+      "ContactType": "Email",
+      "Values": "Alberto_Tromp@yahoo.com",
+      "entityUserId": "0207c06d-f4da-4d0a-b237-54c5c45be067"
+    }
+  ]
+}
+
+### By Type
+GET https://nukleus-backend.onrender.com/api/entitycontact?take=2&skip=1&order=values&direction=asc&type=2 HTTP/1.1
+Content-Type: application/json
+
+{
+  "count": 2,
+  "total": 150,
+  "data": [
+    {
+      "Id": "61fbffbb-d596-4d79-84bf-bf594fe5577f",
+      "ContactType": "Email",
+      "Values": "Alberto_Tromp@yahoo.com",
+      "entityUserId": "0207c06d-f4da-4d0a-b237-54c5c45be067"
+    },
+    {
+      "Id": "44b4b511-e32c-4192-88df-ce9045a849fe",
+      "ContactType": "Email",
+      "Values": "Alena.Grimes@gmail.com",
+      "entityUserId": "991ae73f-51db-4ac9-b8a9-7ceaa63471e8"
+    }
+  ]
+}

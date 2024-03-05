@@ -1,0 +1,50 @@
+### Get all roles by user id
+
+GET https://nukleus-backend.onrender.com/api/entityrole?userid=0207c06d-f4da-4d0a-b237-54c5c45be067 HTTP/1.1
+Content-Type: application/json
+
+{
+  "total": 4,
+  "data": [
+    {
+      "Id": "bca06d2c-3063-4ac1-ba0f-e216905ad7fa",
+      "Role": "Create",
+      "Values": "contego vis cupio audio sulum coaegresco sto",
+      "CreatedDate": "2024-03-05T07:22:26.281Z",
+      "UpdatedDate": "2024-03-05T07:22:26.281Z",
+      "IsActive": true,
+      "entityUserId": "0207c06d-f4da-4d0a-b237-54c5c45be067"
+    },
+    {
+      "Id": "1aca0465-2ee5-4ee7-9854-ce1f30e28871",
+      "Role": "Read",
+      "Values": "valens arbitro unde avaritia occaecati tredecim quaerat",
+      "CreatedDate": "2024-03-05T07:22:26.281Z",
+      "UpdatedDate": "2024-03-05T07:22:26.282Z",
+      "IsActive": true,
+      "entityUserId": "0207c06d-f4da-4d0a-b237-54c5c45be067"
+    },
+    {
+      "Id": "352fc9be-892d-4f40-8699-6917ff525c7f",
+      "Role": "Update",
+      "Values": "clam debilito accusamus surculus possimus incidunt magnam",
+      "CreatedDate": "2024-03-05T07:22:26.282Z",
+      "UpdatedDate": "2024-03-05T07:22:26.282Z",
+      "IsActive": true,
+      "entityUserId": "0207c06d-f4da-4d0a-b237-54c5c45be067"
+    },
+    {
+      "Id": "2605bc4a-490d-4653-af93-a9a2cdb9f8f4",
+      "Role": "Delete",
+      "Values": "arcus speculum amicitia templum illo acer casso",
+      "CreatedDate": "2024-03-05T07:22:26.282Z",
+      "UpdatedDate": "2024-03-05T07:22:26.282Z",
+      "IsActive": true,
+      "entityUserId": "0207c06d-f4da-4d0a-b237-54c5c45be067"
+    }
+  ]
+}
+
+### Get roles by user and specific role
+GET https://nukleus-backend.onrender.com/api/entityrole?userid=0207c06d-f4da-4d0a-b237-54c5c45be067&role=2 HTTP/1.1
+Content-Type: application/json
