@@ -5,6 +5,7 @@ import cors from "cors";
 // Import Routers
 import { entitycontactRouter } from "./entitycontact/entitycontact.router";
 import { entityroleRouter } from "./entityrole/entityrole.router";
+import { entityUserRouter } from "./entityuser/entityuser.router";
 
 // Configuration Setup Area
 dotenv.config();
@@ -26,6 +27,7 @@ app.use(express.json());
 // Router Area
 app.use("/api/entitycontact", entitycontactRouter);
 app.use("/api/entityrole", entityroleRouter);
+app.use("/api/entityuser", entityUserRouter);
 
 // Start the server
 // We shall add more try catch and error handling later
