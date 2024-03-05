@@ -23,12 +23,23 @@ export const listEntityContact = async (
   id: string,
   userid: string,
   take: string,
-  skip: string
+  skip: string,
+  order: string,
+  direction: string
 ): Promise<entity_contact[]> => {
   try {
     const contactType = type ? mapStringToEnum(type) : undefined;
     const skipCount = skip ? parseInt(skip) : undefined;
-    const takeCount = take ? parseInt(take) : undefined;
+    const takeCount = take ? parseInt(take) : 10; // default to 10
+    const orderDirection = direction === "desc" ? "desc" : "asc";
+
+    let orderBy = {};
+
+    if (order === "type") {
+      orderBy = { ContactType: orderDirection };
+    } else if (order === "values") {
+      orderBy = { Values: orderDirection };
+    }
 
     return _context.entity_contact.findMany({
       where: {
@@ -38,6 +49,7 @@ export const listEntityContact = async (
       },
       skip: skipCount,
       take: takeCount,
+      orderBy: orderBy,
     });
   } catch (error) {
     throw new Error(`Error: ${error}`);
