@@ -1,0 +1,109 @@
+
+http://localhost:8000/api/inventory?sortBy=productName&sortDirection=asc&take=5&skip=1
+
+[
+  {
+    "Id": "340ab25a-07f7-4c4d-8534-0b67e8281f38",
+    "QuantityAvailable": 263,
+    "Price": 99,
+    "Currency": "RM",
+    "productId": "18fb1b48-67b4-47ce-9cca-555674698bc3",
+    "entityUserId": null,
+    "isDeleted": false,
+    "product": {
+      "Id": "18fb1b48-67b4-47ce-9cca-555674698bc3",
+      "ProductName": "Bespoke Concrete Chicken",
+      "ProductDescription": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+      "CreatedDate": "2024-03-05T07:22:23.975Z",
+      "UpdatedDate": "2024-03-05T07:22:23.975Z",
+      "IsActive": true,
+      "productCategoryId": "194ebd6e-ac56-498d-9389-49aad1ca4aa0",
+      "product_category": {
+        "Id": "194ebd6e-ac56-498d-9389-49aad1ca4aa0",
+        "CategoryName": "Health",
+        "IsActive": true
+      }
+    }
+  },
+  {
+    "Id": "4e4bb1f8-baba-45e4-9bd2-3ad48bf3e555",
+    "QuantityAvailable": 171,
+    "Price": 99,
+    "Currency": "RM",
+    "productId": "ca01d5ba-7b53-412c-bc11-4c172fc00472",
+    "entityUserId": null,
+    "isDeleted": false,
+    "product": {
+      "Id": "ca01d5ba-7b53-412c-bc11-4c172fc00472",
+      "ProductName": "Bespoke Frozen Keyboard",
+      "ProductDescription": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+      "CreatedDate": "2024-03-05T07:22:04.315Z",
+      "UpdatedDate": "2024-03-05T07:22:04.315Z",
+      "IsActive": true,
+      "productCategoryId": "7f0b8c16-67ba-425d-9948-a13d97aadd6f",
+      "product_category": {
+        "Id": "7f0b8c16-67ba-425d-9948-a13d97aadd6f",
+        "CategoryName": "Music",
+        "IsActive": true
+      }
+    }
+  }
+]
+
+
+http://localhost:8000/api/inventory/a29682ad-08f0-4773-b34e-fd93ec92f3ce
+{
+  "Id": "340ab25a-07f7-4c4d-8534-0b67e8281f38",
+  "QuantityAvailable": 263,
+  "Price": 99,
+  "Currency": "RM",
+  "productId": "18fb1b48-67b4-47ce-9cca-555674698bc3",
+  "entityUserId": null,
+  "isDeleted": false,
+  "product": {
+    "Id": "18fb1b48-67b4-47ce-9cca-555674698bc3",
+    "ProductName": "Bespoke Concrete Chicken",
+    "ProductDescription": "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+    "CreatedDate": "2024-03-05T07:22:23.975Z",
+    "UpdatedDate": "2024-03-05T07:22:23.975Z",
+    "IsActive": true,
+    "productCategoryId": "194ebd6e-ac56-498d-9389-49aad1ca4aa0"
+  }
+}
+
+
+http://localhost:8000/api/inventory/add
+Payload
+{
+  "inventoryData": {
+    "QuantityAvailable": 10,
+    "Price": 20.99,
+    "Currency": "RM",
+    "productId": "bf1e1e82-8c16-4311-ad8e-03ff9f382f10",
+    "entityUserId": "7a9b66f2-0859-4ff3-857c-80963d3b8443",
+    "isDeleted": false
+  }
+}
+
+Response:
+{
+  "Id": "a29682ad-08f0-4773-b34e-fd93ec92f3ce",
+  "QuantityAvailable": 10,
+  "Price": 20.99,
+  "Currency": "RM",
+  "productId": "bf1e1e82-8c16-4311-ad8e-03ff9f382f10",
+  "entityUserId": "7a9b66f2-0859-4ff3-857c-80963d3b8443",
+  "isDeleted": false
+}
+
+
+put payload
+http://localhost:8000/api/inventory/a29682ad-08f0-4773-b34e-fd93ec92f3ce
+{
+  "QuantityAvailable": 15,
+  "Price": 25.99,
+  "Currency": "USD"
+}
+
+delete
+http://localhost:8000/api/inventory/a29682ad-08f0-4773-b34e-fd93ec92f3ce

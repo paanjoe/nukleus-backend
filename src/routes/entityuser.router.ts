@@ -1,10 +1,11 @@
 import express from "express";
 import type { Request, Response } from "express";
 import { body, check, validationResult } from "express-validator";
-import * as EntityUserService from "./entityuser.service";
+import * as EntityUserService from "../services/entityuser.service";
 
 export const entityUserRouter = express.Router();
 
+// Get /api/entityuser
 entityUserRouter.get("/", async (req: Request, res: Response) => {
   try {
     const { id, email, type } = req.query;

@@ -1,11 +1,11 @@
 import express from "express";
 import type { Request, Response } from "express";
 import { body, check, validationResult } from "express-validator";
-import * as EntityRoleService from "./entityrole.service";
+import * as EntityRoleService from "../services/entityrole.service";
 
 export const entityroleRouter = express.Router();
 
-// Get
+// Get /api/entityrole
 entityroleRouter.get(
   "/",
   [

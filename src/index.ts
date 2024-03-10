@@ -3,9 +3,10 @@ import express from "express";
 import cors from "cors";
 
 // Import Routers
-import { entitycontactRouter } from "./entitycontact/entitycontact.router";
-import { entityroleRouter } from "./entityrole/entityrole.router";
-import { entityUserRouter } from "./entityuser/entityuser.router";
+import { entitycontactRouter } from "./routes/entitycontact.router";
+import { entityroleRouter } from "./routes/entityrole.router";
+import { entityUserRouter } from "./routes/entityuser.router";
+import { inventoryRouter } from "./routes/inventory.router";
 
 // Configuration Setup Area
 dotenv.config();
@@ -28,6 +29,7 @@ app.use(express.json());
 app.use("/api/entitycontact", entitycontactRouter);
 app.use("/api/entityrole", entityroleRouter);
 app.use("/api/entityuser", entityUserRouter);
+app.use("/api/inventory", inventoryRouter);
 
 // Start the server
 // We shall add more try catch and error handling later
