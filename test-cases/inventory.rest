@@ -1,6 +1,6 @@
 
-http://localhost:8000/api/inventory?sortBy=productName&sortDirection=asc&take=5&skip=1
-
+GET https://nukleus-backend.onrender.com/api/inventory?sortBy=productName&sortDirection=asc&take=5&skip=1 HTTP/1.1
+Content-Type: application/json
 [
   {
     "Id": "340ab25a-07f7-4c4d-8534-0b67e8281f38",
@@ -51,7 +51,8 @@ http://localhost:8000/api/inventory?sortBy=productName&sortDirection=asc&take=5&
 ]
 
 
-http://localhost:8000/api/inventory/a29682ad-08f0-4773-b34e-fd93ec92f3ce
+GET https://nukleus-backend.onrender.com/api/inventory/a29682ad-08f0-4773-b34e-fd93ec92f3ce HTTP/1.1
+Content-Type: application/json
 {
   "Id": "340ab25a-07f7-4c4d-8534-0b67e8281f38",
   "QuantityAvailable": 263,
@@ -72,8 +73,9 @@ http://localhost:8000/api/inventory/a29682ad-08f0-4773-b34e-fd93ec92f3ce
 }
 
 
-http://localhost:8000/api/inventory/add
-Payload
+POST https://nukleus-backend.onrender.com/api/inventory/add-inventory HTTP/1.1
+Content-Type: application/json
+Payload:
 {
   "inventoryData": {
     "QuantityAvailable": 10,
@@ -97,13 +99,17 @@ Response:
 }
 
 
-put payload
-http://localhost:8000/api/inventory/a29682ad-08f0-4773-b34e-fd93ec92f3ce
+PUT https://nukleus-backend.onrender.com/api/inventory/update-inventory/a29682ad-08f0-4773-b34e-fd93ec92f3ce HTTP/1.1
+Content-Type: application/json
+Payload:
 {
   "QuantityAvailable": 15,
   "Price": 25.99,
   "Currency": "USD"
 }
+Response: 200 OK
 
-delete
-http://localhost:8000/api/inventory/a29682ad-08f0-4773-b34e-fd93ec92f3ce
+DELETE https://nukleus-backend.onrender.com/api/inventory/delete-inventory/a29682ad-08f0-4773-b34e-fd93ec92f3ce HTTP/1.1
+Response: 204 No Content
+
+

@@ -45,7 +45,7 @@ inventoryRouter.get(
 
 // Add a new product
 inventoryRouter.post(
-  "/add",
+  "/add-inventory",
   // authMiddleware,
   // authorizeMiddleware(["Create"]),
   async (req: Request, res: Response) => {
@@ -72,7 +72,7 @@ inventoryRouter.post(
 
 // Delete a product
 inventoryRouter.delete(
-  "/:inventoryId",
+  "/delete-inventory/:inventoryId",
   // authMiddleware,
   // authorizeMiddleware(["Delete"]),
   async (req: Request, res: Response) => {
@@ -88,7 +88,7 @@ inventoryRouter.delete(
 
 // Update a product
 inventoryRouter.put(
-  "/:inventoryId",
+  "/update-inventory/:inventoryId",
   // authMiddleware,
   // authorizeMiddleware(["Update"]),
   async (req: Request, res: Response) => {
