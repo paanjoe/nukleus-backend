@@ -94,6 +94,29 @@ Run the development server
 
 ## Testing the endpoint
 
+### Unit Test:
+
+Simply run:
+
+```bash
+  npm run test
+```
+
+Result:
+
+```
+PASS  unit-test/inventory.test.ts
+  Inventory API Tests
+    ✓ GET /api/inventory returns 200 OK status (1247 ms)
+    ✓ GET /api/inventory/:inventoryId returns 200 OK status (324 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        3.435 s
+Ran all test suites.
+```
+
 To test this endpoint you can head over to API documentation swagger:
 
 [Swagger Url](#)

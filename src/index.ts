@@ -18,8 +18,7 @@ if (!process.env.PORT) {
 }
 
 // Settings / Config Area
-const PORT: number = parseInt(process.env.PORT as string, 10);
-const app = express();
+export const app = express();
 
 // Initialize Area
 app.use(cors());
@@ -33,6 +32,7 @@ app.use("/api/inventory", inventoryRouter);
 
 // Start the server
 // We shall add more try catch and error handling later
+const PORT: number = parseInt(process.env.PORT as string, 10) || 3000;
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });

@@ -4,9 +4,9 @@
   "description": "This is a Unit Nukleus GovTech, Kem Digital Assessment for Software Developer roles.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "db-pull": "npx prisma db pull",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -21,14 +21,33 @@
     "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.23.3",
     "@types/cors": "^2.8.17",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
     "@types/node": "^20.11.24",
     "esbuild-register": "^3.5.0",
+    "jest": "^29.7.0",
     "nodemon": "^3.1.0",
     "prisma": "^5.10.2",
+    "supertest": "^6.3.4",
+    "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }
