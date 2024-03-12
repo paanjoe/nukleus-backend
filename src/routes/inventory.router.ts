@@ -21,7 +21,13 @@ inventoryRouter.get(
         take as string,
         skip as string
       );
-      res.status(200).json(inventories);
+
+      const totalInventoryCount = await InventoryService.getInventoriesCount();
+
+      res.status(200).json({
+        total: totalInventoryCount,
+        data: inventories,
+      });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }

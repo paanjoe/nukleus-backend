@@ -56,6 +56,16 @@ export const listAllInventory = async (
   }
 };
 
+export const getInventoriesCount = async (): Promise<any> => {
+  try {
+    const count = await prisma.inventory.count();
+
+    return count;
+  } catch (error) {
+    throw new Error(`Error fetching product: ${error}`);
+  }
+};
+
 export const getInventoryById = async (inventoryId: string): Promise<any> => {
   try {
     const inventory = await prisma.inventory.findUnique({
