@@ -58,7 +58,11 @@ export const listAllInventory = async (
 
 export const getInventoriesCount = async (): Promise<any> => {
   try {
-    const count = await prisma.inventory.count();
+    const count = await prisma.inventory.count({
+      where: {
+        isDeleted: false, // Only fetch non-deleted inventory items
+      },
+    });
 
     return count;
   } catch (error) {
@@ -105,6 +109,7 @@ export const deleteInventory = async (inventoryId: string): Promise<void> => {
         Id: inventoryId,
       },
     });
+    return;
   } catch (error) {
     throw new Error(`Error deleting product: ${error}`);
   }
