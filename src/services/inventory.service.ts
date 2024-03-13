@@ -77,7 +77,12 @@ export const getInventoryById = async (inventoryId: string): Promise<any> => {
         Id: inventoryId,
       },
       include: {
-        product: true, // Include related inventory items
+        product: {
+          include: {
+            product_category: true, // Include product category details
+            product_media: true, // Include product media details
+          },
+        },
       },
     });
 
