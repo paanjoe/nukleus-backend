@@ -25,8 +25,8 @@ productRouter.get(
       const productsCount = await ProductService.getProductsCount();
 
       res.status(200).json({
-        total: products,
-        data: productsCount,
+        total: productsCount,
+        data: products,
       });
     } catch (error) {
       res.status(500).json({ error: error.message });
