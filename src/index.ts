@@ -7,6 +7,7 @@ import { entitycontactRouter } from "./routes/entitycontact.router";
 import { entityroleRouter } from "./routes/entityrole.router";
 import { entityUserRouter } from "./routes/entityuser.router";
 import { inventoryRouter } from "./routes/inventory.router";
+import { productRouter } from "./routes/product.router";
 
 // Configuration Setup Area
 dotenv.config();
@@ -29,6 +30,7 @@ app.use("/api/entitycontact", entitycontactRouter);
 app.use("/api/entityrole", entityroleRouter);
 app.use("/api/entityuser", entityUserRouter);
 app.use("/api/inventory", inventoryRouter);
+app.use("/api/product", productRouter);
 
 // Start the server
 // We shall add more try catch and error handling later
