@@ -137,8 +137,8 @@ export const updateInventory = async (
         QuantityAvailable: updatedInventoryData.QuantityAvailable,
         product: {
           update: {
-            ProductName: updatedInventoryData.product.ProductName,
-            ProductDescription: updatedInventoryData.product.ProductDescription,
+            ProductName: updatedInventoryData.ProductName,
+            ProductDescription: updatedInventoryData.ProductDescription,
           },
         },
       },
