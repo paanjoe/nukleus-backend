@@ -8,19 +8,9 @@ This would be the entry point for all of my documentation.
 
 This repositories serves as the Backend Services for this assessment. Although we are using Supabase which can act as BaaS (Back-End As a Service), I think it is important to have a custom backend to showcase my backend writing skills. Although there is still a lot can be improved but I think this is enough for the assessment.
 
-## Todo
-
-- [/] Contact Endpoint
-- [/] Roles Endpoint
-- [/] User Endpoint
-- [] Product Category Endpoint
-- [] Product Media Endpoint
-- [] Product Endpoint
-- [] Inventory Endpoint
-
 ## Documentation
 
-### [Demo Link](#)
+### [Demo Link](https://nukleus-assessment.web3ramen.com/)
 
 [API Url](https://nukleus-backend.onrender.com)
 
@@ -30,9 +20,9 @@ This repositories serves as the Backend Services for this assessment. Although w
 
 [Backend-Service Repositories](https://github.com/paanjoe/nukleus-backend)
 
-[Frontend Repositories](#)
+[Frontend Repositories](https://github.com/paanjoe/nukleus-frontend)
 
-[API Documentation](#)
+[API Documentation](https://github.com/paanjoe/nukleus-backend/tree/main/test-cases)
 
 ## Tech Stack | Framework
 
@@ -49,25 +39,32 @@ This repositories serves as the Backend Services for this assessment. Although w
 - **Backend Framework:** ExpressJS
 - **Api Documentation:** Swagger
 - **CI/CD:** GitHub Actions
-- **Unit Test:** xxx
+- **Unit Test:** Jest & Supertest
 
 #### Nukleus-Frontend
 
-- **xxx:** xxx
+- **Framework:** React Next.JS
+- **UI Kit** TailwindCSS
+- **Infrastructure** Vercel
 
 #### Deployment Infrastructure
 
 - **Host for Backend:** Render.com
-- **Host for Frontend:** xxx
+- **Host for Frontend:** Vercel.com
 - **CI/CD:** GitHub Actions
 
 ## Environment Variables - Nukleus-Backend
 
-To run this Nukleus Domain, you need this `.env` file in the root of the project. You can refer the .env.example file.
+To run this Nukleus Backend, you need this `.env` file in the root of the project. You can refer the .env.example file.
 
 ```
-DATABASE_URL=xxxxxxxxxxxxxxxxxx
-PORT=xxxxxxxxxxxxxxxxxx
+DATABASE_URL=xxx
+PORT=xxx
+JWT_SECRET=xxx
+SUPABASE_ANON_KEY=xxx
+SUPABASE_URL=xxx
+USER_EMAIL=xxx
+USER_PASSWORD=xxx
 ```
 
 ## Deployment | Command
@@ -118,11 +115,6 @@ Ran all test suites.
 ```
 
 To test this endpoint you can head over to API documentation swagger:
-
-[Swagger Url](#)
-[Api Url](https://nukleus-backend.onrender.com)
-
-Or if you're lazy to do that, simply head over to `./test-cases/{filename}.rest` and run the test cases by using the `Rest Client` extension in VSCode. You would be able to send the request and get the results stated in the file.
 
 ## License
 

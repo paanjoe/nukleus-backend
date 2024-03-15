@@ -45,7 +45,7 @@ export const authMiddleware = async (
     // const decodedToken: any = jwt.verify(token, process.env.JWT_SECRET);
     // const userId = decodedToken.userId;
 
-    // // Fetch user details from the database
+    // // Fetch user details from the databasep
     // const user = await prisma.entity_user.findUnique({
     //   where: { Id: userId },
     //   include: { entity_role: true }, // Include roles associated with the user
