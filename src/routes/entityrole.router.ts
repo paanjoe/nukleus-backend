@@ -44,7 +44,7 @@ entityroleRouter.get(
 // Put /api/entityrole
 entityroleRouter.put(
   "/:userId",
-  // authMiddleware,
+  authMiddleware,
   [
     check("userId")
       .isString()
