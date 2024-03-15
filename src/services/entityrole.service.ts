@@ -35,3 +35,22 @@ export const listRolesByEntity = async (
     throw new Error(`Error: ${error}`);
   }
 };
+
+export const updateUserRole = async (
+  userId: string,
+  payload: any
+): Promise<void> => {
+  try {
+    await _context.entity_role.update({
+      where: {
+        Id: payload.Id,
+        entityUserId: userId,
+      },
+      data: {
+        IsActive: payload.IsActive,
+      },
+    });
+  } catch (error) {
+    throw new Error(`Error updating inventory: ${error}`);
+  }
+};

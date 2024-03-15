@@ -14,7 +14,6 @@ dotenv.config();
 
 // Validation Area
 if (!process.env.PORT) {
-  console.log("There is no port defined in the .env file");
   process.exit(1);
 }
 

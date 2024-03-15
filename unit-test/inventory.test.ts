@@ -25,7 +25,6 @@ describe("Inventory API Tests", () => {
       if (error) throw error;
 
       token = data?.session?.access_token || "";
-      console.log("token", token);
     } catch (error) {
       console.error("Error signing in:", error.message);
     }

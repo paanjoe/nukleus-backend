@@ -32,8 +32,6 @@ export const authMiddleware = async (
 
     const { data, error } = await supabase.auth.getUser(token);
 
-    console.log("data", data);
-
     if (error) {
       return res.status(401).json({ error: "Unauthorized: Invalid token" });
     }

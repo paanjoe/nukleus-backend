@@ -40,3 +40,32 @@ entityroleRouter.get(
     }
   }
 );
+
+// Put /api/entityrole
+entityroleRouter.put(
+  "/:userId",
+  // authMiddleware,
+  [
+    check("userId")
+      .isString()
+      .notEmpty()
+      .withMessage("Parameter: userid is required."),
+  ],
+  async (req: Request, res: Response) => {
+    try {
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+
+      const userId = req.params.userId;
+      const payload = req.body;
+
+      await EntityRoleService.updateUserRole(userId, payload);
+      res.status(200).end();
+    } catch (error: any) {
+      return res.status(500).json({ error: error.message });
+    }
+  }
+);
