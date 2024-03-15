@@ -129,7 +129,19 @@ export const updateInventory = async (
       where: {
         Id: inventoryId,
       },
-      data: updatedInventoryData,
+      include: {
+        product: true,
+      },
+      data: {
+        Price: updatedInventoryData.Price,
+        QuantityAvailable: updatedInventoryData.QuantityAvailable,
+        product: {
+          update: {
+            ProductName: updatedInventoryData.product.ProductName,
+            ProductDescription: updatedInventoryData.product.ProductDescription,
+          },
+        },
+      },
     });
   } catch (error) {
     throw new Error(`Error updating inventory: ${error}`);

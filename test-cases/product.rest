@@ -1,4 +1,4 @@
 ### GET /api/product
-GET https://nukleus-backend.onrender.com/api/product?sortBy=productName&sortDirection=asc&take=5&skip=1 HTTP/1.1
+GET https://nukleus-backend.onrender.com/api/product?sortBy=productName&sortDirection=asc&take=1&skip=0 HTTP/1.1
 
 Content-Type: application/json

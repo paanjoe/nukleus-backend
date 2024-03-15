@@ -5,7 +5,7 @@ describe("Inventory API Tests", () => {
   let server: any;
 
   beforeAll(() => {
-    server = app.listen(4000); // Start the server on a different port for testing
+    server = app.listen(4001); // Start the server on a different port for testing
   });
 
   afterAll((done) => {
