@@ -2,6 +2,7 @@
 
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
+import { createClient } from "@supabase/supabase-js";
 import {
   PrismaClient,
   entity_role_role_enum,
@@ -24,21 +25,38 @@ export const authMiddleware = async (
 
   try {
     // Verify the token
-    const decodedToken: any = jwt.verify(token, process.env.JWT_SECRET);
-    const userId = decodedToken.userId;
+    const supabase = createClient(
+      process.env.SUPABASE_URL,
+      process.env.SUPABASE_ANON_KEY
+    );
 
-    // Fetch user details from the database
-    const user = await prisma.entity_user.findUnique({
-      where: { Id: userId },
-      include: { entity_role: true }, // Include roles associated with the user
-    });
+    const { data, error } = await supabase.auth.getUser(token);
 
-    if (!user) {
+    console.log("data", data);
+
+    if (error) {
       return res.status(401).json({ error: "Unauthorized: Invalid token" });
     }
 
+    if (data === null) {
+      return res.status(401).json({ error: "Unauthorized: Invalid token" });
+    }
+
+    // const decodedToken: any = jwt.verify(token, process.env.JWT_SECRET);
+    // const userId = decodedToken.userId;
+
+    // // Fetch user details from the database
+    // const user = await prisma.entity_user.findUnique({
+    //   where: { Id: userId },
+    //   include: { entity_role: true }, // Include roles associated with the user
+    // });
+
+    // if (!user) {
+    //   return res.status(401).json({ error: "Unauthorized: No user found" });
+    // }
+
     // Attach user object to request for use in subsequent middleware or route handlers
-    req.user = user;
+    // req.user = user;
 
     next();
   } catch (error) {

@@ -11,7 +11,7 @@ export const inventoryRouter = express.Router();
 // List all products
 inventoryRouter.get(
   "/",
-  // authMiddleware,
+  authMiddleware,
   async (req: Request, res: Response) => {
     try {
       const { sortBy, sortDirection, take, skip } = req.query;
@@ -37,7 +37,7 @@ inventoryRouter.get(
 // Get inventory by ID
 inventoryRouter.get(
   "/:inventoryId",
-  // authMiddleware,
+  authMiddleware,
   async (req: Request, res: Response) => {
     try {
       const inventoryId = req.params.inventoryId;
@@ -52,7 +52,7 @@ inventoryRouter.get(
 // Add a new product
 inventoryRouter.post(
   "/add-inventory",
-  // authMiddleware,
+  authMiddleware,
   // authorizeMiddleware(["Create"]),
   async (req: Request, res: Response) => {
     try {
@@ -79,7 +79,7 @@ inventoryRouter.post(
 // Delete a product
 inventoryRouter.delete(
   "/delete-inventory/:inventoryId",
-  // authMiddleware,
+  authMiddleware,
   // authorizeMiddleware(["Delete"]),
   async (req: Request, res: Response) => {
     try {
@@ -95,7 +95,7 @@ inventoryRouter.delete(
 // Update a product
 inventoryRouter.put(
   "/update-inventory/:inventoryId",
-  // authMiddleware,
+  authMiddleware,
   // authorizeMiddleware(["Update"]),
   async (req: Request, res: Response) => {
     try {

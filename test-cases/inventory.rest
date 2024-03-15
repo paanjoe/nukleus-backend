@@ -106,9 +106,10 @@ PUT https://nukleus-backend.onrender.com/api/inventory/update-inventory/a29682ad
 Content-Type: application/json
 Payload:
 {
-  "QuantityAvailable": 15,
-  "Price": 25.99,
-  "Currency": "USD"
+    "Price": 999,
+    "QuantityAvailable": 999,
+    "ProductName": "PaanJoe",
+    "ProductDescription": "ssadasdasda"
 }
 Response: 200 OK
 

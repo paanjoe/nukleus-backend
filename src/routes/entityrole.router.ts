@@ -2,12 +2,14 @@ import express from "express";
 import type { Request, Response } from "express";
 import { body, check, validationResult } from "express-validator";
 import * as EntityRoleService from "../services/entityrole.service";
+import { authMiddleware } from "../middleware/authMiddleware";
 
 export const entityroleRouter = express.Router();
 
 // Get /api/entityrole
 entityroleRouter.get(
   "/",
+  authMiddleware,
   [
     check("userid")
       .isString()

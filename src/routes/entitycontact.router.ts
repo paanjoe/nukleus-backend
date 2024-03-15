@@ -12,7 +12,7 @@ export const entitycontactRouter = express.Router();
 // Get /api/entitycontact
 entitycontactRouter.get(
   "/",
-  // authMiddleware,
+  authMiddleware,
   // authorizeMiddleware(["Read"]),
   async (req: Request, res: Response) => {
     try {
@@ -20,21 +20,6 @@ entitycontactRouter.get(
       const userId = req.user?.Id;
 
       const { type, id, userid, take, skip, order, direction } = req.query;
-
-      // const rolesArray = Array.isArray(roles) ? roles : [roles];
-
-      // // Check if roles are provided in the request query
-      // if (!rolesArray || !Array.isArray(rolesArray)) {
-      //   return res.status(400).json({ error: "Roles are required" });
-      // }
-
-      // // Convert roles to lowercase to ensure consistency
-      // const lowercaseRoles = rolesArray.map((role: string) =>
-      //   role.toLowerCase()
-      // );
-
-      // // Check if user has permission to access this route
-      // await authorizeMiddleware(lowercaseRoles)(req, res, () => {});
 
       const entityContacts = await EntityContactService.listEntityContact(
         type as string,
